@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AFD8F676187B496300FBA165 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD8F675187B496300FBA165 /* Foundation.framework */; };
+		AFD8F687187B496300FBA165 /* ScreenshotShareSheet.mm in Sources */ = {isa = PBXBuildFile; fileRef = AFD8F686187B496300FBA165 /* ScreenshotShareSheet.mm */; };
+		AFD8F691187B497200FBA165 /* libsubstrate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD8F690187B497200FBA165 /* libsubstrate.dylib */; };
+		AFD8F693187B4F3300FBA165 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD8F692187B4F3300FBA165 /* UIKit.framework */; };
+		AFEBDBA7187BC90600061081 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFEBDBA6187BC90600061081 /* AssetsLibrary.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AFD8F672187B496300FBA165 /* ScreenshotShareSheet.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = ScreenshotShareSheet.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFD8F675187B496300FBA165 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AFD8F67A187B496300FBA165 /* control.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = control.txt; path = Package/DEBIAN/control.txt; sourceTree = "<group>"; };
+		AFD8F67B187B496300FBA165 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		AFD8F67D187B496300FBA165 /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
+		AFD8F681187B496300FBA165 /* ScreenshotShareSheet.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ScreenshotShareSheet.plist; path = Package/Library/PreferenceLoader/Preferences/ScreenshotShareSheet.plist; sourceTree = "<group>"; };
+		AFD8F682187B496300FBA165 /* ScreenshotShareSheetIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ScreenshotShareSheetIcon.png; path = Package/Library/PreferenceLoader/Preferences/ScreenshotShareSheetIcon.png; sourceTree = "<group>"; };
+		AFD8F683187B496300FBA165 /* ScreenshotShareSheetIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ScreenshotShareSheetIcon@2x.png"; path = "Package/Library/PreferenceLoader/Preferences/ScreenshotShareSheetIcon@2x.png"; sourceTree = "<group>"; };
+		AFD8F684187B496300FBA165 /* ScreenshotShareSheet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScreenshotShareSheet-Prefix.pch"; sourceTree = "<group>"; };
+		AFD8F685187B496300FBA165 /* ScreenshotShareSheet.xm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ScreenshotShareSheet.xm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AFD8F686187B496300FBA165 /* ScreenshotShareSheet.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ScreenshotShareSheet.mm; sourceTree = "<group>"; };
+		AFD8F68A187B496300FBA165 /* ScreenshotShareSheet.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ScreenshotShareSheet.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/ScreenshotShareSheet.plist; sourceTree = "<group>"; };
+		AFD8F690187B497200FBA165 /* libsubstrate.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsubstrate.dylib; path = ../../../../../opt/iOSOpenDev/lib/libsubstrate.dylib; sourceTree = "<group>"; };
+		AFD8F692187B4F3300FBA165 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AFEBDBA6187BC90600061081 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFD8F66E187B496300FBA165 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFEBDBA7187BC90600061081 /* AssetsLibrary.framework in Frameworks */,
+				AFD8F693187B4F3300FBA165 /* UIKit.framework in Frameworks */,
+				AFD8F691187B497200FBA165 /* libsubstrate.dylib in Frameworks */,
+				AFD8F676187B496300FBA165 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFD8F667187B496300FBA165 = {
+			isa = PBXGroup;
+			children = (
+				AFD8F677187B496300FBA165 /* ScreenshotShareSheet */,
+				AFD8F674187B496300FBA165 /* Frameworks */,
+				AFD8F673187B496300FBA165 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFD8F673187B496300FBA165 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F672187B496300FBA165 /* ScreenshotShareSheet.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFD8F674187B496300FBA165 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFEBDBA6187BC90600061081 /* AssetsLibrary.framework */,
+				AFD8F692187B4F3300FBA165 /* UIKit.framework */,
+				AFD8F690187B497200FBA165 /* libsubstrate.dylib */,
+				AFD8F675187B496300FBA165 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFD8F677187B496300FBA165 /* ScreenshotShareSheet */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F685187B496300FBA165 /* ScreenshotShareSheet.xm */,
+				AFD8F686187B496300FBA165 /* ScreenshotShareSheet.mm */,
+				AFD8F678187B496300FBA165 /* Package */,
+				AFD8F67C187B496300FBA165 /* Supporting Files */,
+			);
+			path = ScreenshotShareSheet;
+			sourceTree = "<group>";
+		};
+		AFD8F678187B496300FBA165 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F679187B496300FBA165 /* DEBIAN */,
+				AFD8F67E187B496300FBA165 /* Library */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		AFD8F679187B496300FBA165 /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F67A187B496300FBA165 /* control.txt */,
+				AFD8F67B187B496300FBA165 /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		AFD8F67C187B496300FBA165 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F67D187B496300FBA165 /* PackageVersion.plist */,
+				AFD8F684187B496300FBA165 /* ScreenshotShareSheet-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AFD8F67E187B496300FBA165 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F67F187B496300FBA165 /* PreferenceLoader */,
+				AFD8F688187B496300FBA165 /* MobileSubstrate */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		AFD8F67F187B496300FBA165 /* PreferenceLoader */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F680187B496300FBA165 /* Preferences */,
+			);
+			name = PreferenceLoader;
+			sourceTree = "<group>";
+		};
+		AFD8F680187B496300FBA165 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F681187B496300FBA165 /* ScreenshotShareSheet.plist */,
+				AFD8F682187B496300FBA165 /* ScreenshotShareSheetIcon.png */,
+				AFD8F683187B496300FBA165 /* ScreenshotShareSheetIcon@2x.png */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		AFD8F688187B496300FBA165 /* MobileSubstrate */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F689187B496300FBA165 /* DynamicLibraries */,
+			);
+			name = MobileSubstrate;
+			sourceTree = "<group>";
+		};
+		AFD8F689187B496300FBA165 /* DynamicLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				AFD8F68A187B496300FBA165 /* ScreenshotShareSheet.plist */,
+			);
+			name = DynamicLibraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AFD8F66F187B496300FBA165 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AFD8F671187B496300FBA165 /* ScreenshotShareSheet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFD8F68D187B496300FBA165 /* Build configuration list for PBXNativeTarget "ScreenshotShareSheet" */;
+			buildPhases = (
+				AFD8F66C187B496300FBA165 /* ShellScript */,
+				AFD8F66D187B496300FBA165 /* Sources */,
+				AFD8F66E187B496300FBA165 /* Frameworks */,
+				AFD8F66F187B496300FBA165 /* Headers */,
+				AFD8F670187B496300FBA165 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScreenshotShareSheet;
+			productName = ScreenshotShareSheet;
+			productReference = AFD8F672187B496300FBA165 /* ScreenshotShareSheet.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFD8F668187B496300FBA165 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = AFD8F66B187B496300FBA165 /* Build configuration list for PBXProject "ScreenshotShareSheet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AFD8F667187B496300FBA165;
+			productRefGroup = AFD8F673187B496300FBA165 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFD8F671187B496300FBA165 /* ScreenshotShareSheet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AFD8F66C187B496300FBA165 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp-logos";
+		};
+		AFD8F670187B496300FBA165 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFD8F66D187B496300FBA165 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFD8F687187B496300FBA165 /* ScreenshotShareSheet.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AFD8F68B187B496300FBA165 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Debug;
+		};
+		AFD8F68C187B496300FBA165 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Release;
+		};
+		AFD8F68E187B496300FBA165 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ScreenshotShareSheet/ScreenshotShareSheet-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/iOSOpenDev/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = 10.0.1.5;
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Debug;
+		};
+		AFD8F68F187B496300FBA165 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ScreenshotShareSheet/ScreenshotShareSheet-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/iOSOpenDev/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = 10.0.1.5;
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFD8F66B187B496300FBA165 /* Build configuration list for PBXProject "ScreenshotShareSheet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFD8F68B187B496300FBA165 /* Debug */,
+				AFD8F68C187B496300FBA165 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFD8F68D187B496300FBA165 /* Build configuration list for PBXNativeTarget "ScreenshotShareSheet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFD8F68E187B496300FBA165 /* Debug */,
+				AFD8F68F187B496300FBA165 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFD8F668187B496300FBA165 /* Project object */;
+}
