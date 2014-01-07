@@ -55,6 +55,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
                  applicationActivities:nil];
+                activityController.excludedActivityTypes = @[ UIActivityTypeSaveToCameraRoll ];
                 
                 UIWindow* topWindow = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] retain];
                 topWindow.hidden = NO;
