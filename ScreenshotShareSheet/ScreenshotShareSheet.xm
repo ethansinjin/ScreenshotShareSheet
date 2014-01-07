@@ -55,11 +55,12 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
                  applicationActivities:nil];
-                activityController.excludedActivityTypes = @[ UIActivityTypeSaveToCameraRoll ];
+                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
                 
                 UIWindow* topWindow = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] retain];
                 topWindow.hidden = NO;
                 UIViewController *vc  = [[UIViewController alloc] init];
+                
                 [topWindow setRootViewController:vc];
                 [vc presentViewController:activityController animated:YES completion:NULL];
                 
