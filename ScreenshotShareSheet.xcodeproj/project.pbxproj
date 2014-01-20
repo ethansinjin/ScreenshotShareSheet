@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA5A6A93188DC17D00D48298 /* TTOpenInAppActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5A6A8D188DC17D00D48298 /* TTOpenInAppActivity.h */; };
+		AA5A6A94188DC17D00D48298 /* TTOpenInAppActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5A6A8E188DC17D00D48298 /* TTOpenInAppActivity.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AFD8F676187B496300FBA165 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD8F675187B496300FBA165 /* Foundation.framework */; };
 		AFD8F687187B496300FBA165 /* ScreenshotShareSheet.mm in Sources */ = {isa = PBXBuildFile; fileRef = AFD8F686187B496300FBA165 /* ScreenshotShareSheet.mm */; };
 		AFD8F691187B497200FBA165 /* libsubstrate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD8F690187B497200FBA165 /* libsubstrate.dylib */; };
@@ -15,6 +17,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA5A6A8D188DC17D00D48298 /* TTOpenInAppActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTOpenInAppActivity.h; sourceTree = "<group>"; };
+		AA5A6A8E188DC17D00D48298 /* TTOpenInAppActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTOpenInAppActivity.m; sourceTree = "<group>"; };
+		AA5A6A8F188DC17D00D48298 /* TTOpenInAppActivity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TTOpenInAppActivity.png; sourceTree = "<group>"; };
+		AA5A6A90188DC17D00D48298 /* TTOpenInAppActivity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TTOpenInAppActivity@2x.png"; sourceTree = "<group>"; };
+		AA5A6A91188DC17D00D48298 /* TTOpenInAppActivity7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TTOpenInAppActivity7.png; sourceTree = "<group>"; };
+		AA5A6A92188DC17D00D48298 /* TTOpenInAppActivity7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TTOpenInAppActivity7@2x.png"; sourceTree = "<group>"; };
 		AFD8F672187B496300FBA165 /* ScreenshotShareSheet.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = ScreenshotShareSheet.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD8F675187B496300FBA165 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AFD8F67B187B496300FBA165 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
@@ -77,6 +85,12 @@
 		AFD8F677187B496300FBA165 /* ScreenshotShareSheet */ = {
 			isa = PBXGroup;
 			children = (
+				AA5A6A8D188DC17D00D48298 /* TTOpenInAppActivity.h */,
+				AA5A6A8E188DC17D00D48298 /* TTOpenInAppActivity.m */,
+				AA5A6A8F188DC17D00D48298 /* TTOpenInAppActivity.png */,
+				AA5A6A90188DC17D00D48298 /* TTOpenInAppActivity@2x.png */,
+				AA5A6A91188DC17D00D48298 /* TTOpenInAppActivity7.png */,
+				AA5A6A92188DC17D00D48298 /* TTOpenInAppActivity7@2x.png */,
 				AFD8F685187B496300FBA165 /* ScreenshotShareSheet.xm */,
 				AFD8F686187B496300FBA165 /* ScreenshotShareSheet.mm */,
 				AFD8F678187B496300FBA165 /* Package */,
@@ -161,6 +175,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5A6A93188DC17D00D48298 /* TTOpenInAppActivity.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD8F687187B496300FBA165 /* ScreenshotShareSheet.mm in Sources */,
+				AA5A6A94188DC17D00D48298 /* TTOpenInAppActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +342,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				iOSOpenDevBuildPackageOnAnyBuild = NO;
 				iOSOpenDevCopyOnBuild = NO;
-				iOSOpenDevDevice = 10.0.1.5;
+				iOSOpenDevDevice = 192.168.2.6;
 				iOSOpenDevInstallOnAnyBuild = NO;
 				iOSOpenDevInstallOnProfiling = YES;
 				iOSOpenDevRespringOnInstall = YES;
@@ -350,7 +366,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				iOSOpenDevBuildPackageOnAnyBuild = NO;
 				iOSOpenDevCopyOnBuild = NO;
-				iOSOpenDevDevice = 10.0.1.5;
+				iOSOpenDevDevice = 192.168.2.6;
 				iOSOpenDevInstallOnAnyBuild = NO;
 				iOSOpenDevInstallOnProfiling = YES;
 				iOSOpenDevRespringOnInstall = YES;

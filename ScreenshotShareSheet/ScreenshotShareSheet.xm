@@ -1,5 +1,5 @@
 #import <SpringBoard/SpringBoard.h>
-
+#import "TTOpenInAppActivity.h"
 
 // Logos by Dustin Howett
 // See http://iphonedevwiki.net/index.php/Logos
@@ -46,22 +46,29 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
             
             // The end of the enumeration is signaled by asset == nil.
             if (alAsset) {
-                ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                
-                // Do something interesting with the AV asset.
-                NSArray *activityItems = @[latestPhoto];
-                UIActivityViewController *activityController =
-                [[UIActivityViewController alloc]
-                 initWithActivityItems:activityItems
-                 applicationActivities:nil];
-                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
-                
                 UIWindow* topWindow = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] retain];
                 topWindow.hidden = NO;
                 UIViewController *vc  = [[UIViewController alloc] init];
                 
                 [topWindow setRootViewController:vc];
+                
+                ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
+                NSURL *assetURL = [alAsset valueForProperty:ALAssetPropertyAssetURL];
+                
+                TTOpenInAppActivity *openInActivity = [[TTOpenInAppActivity alloc] initWithView:vc.view andRect:vc.view.bounds];
+                
+                // Do something interesting with the AV asset.
+                NSArray *activityItems = @[latestPhoto, assetURL];
+                UIActivityViewController *activityController =
+                [[UIActivityViewController alloc]
+                 initWithActivityItems:activityItems
+                 applicationActivities:@[ openInActivity ]];
+                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
+                
+                openInActivity.superViewController = activityController;
+                [openInActivity release];
+                
                 [vc presentViewController:activityController animated:YES completion:NULL];
                 
                 activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
