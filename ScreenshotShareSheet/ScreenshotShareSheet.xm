@@ -1,5 +1,5 @@
 #import <SpringBoard/SpringBoard.h>
-
+#import "TTOpenInAppActivity.h"
 
 // Logos by Dustin Howett
 // See http://iphonedevwiki.net/index.php/Logos
@@ -32,7 +32,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
     id lastPhoto = [contents objectAtIndex:[contents count] -1];
     UIImage *screenshot = [lastPhoto newFullSizeImage];
      */
-
+    
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
@@ -46,22 +46,29 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
             
             // The end of the enumeration is signaled by asset == nil.
             if (alAsset) {
-                ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                
-                // Do something interesting with the AV asset.
-                NSArray *activityItems = @[latestPhoto];
-                UIActivityViewController *activityController =
-                [[UIActivityViewController alloc]
-                 initWithActivityItems:activityItems
-                 applicationActivities:nil];
-                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
-                
                 UIWindow* topWindow = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] retain];
                 topWindow.hidden = NO;
                 UIViewController *vc  = [[UIViewController alloc] init];
                 
                 [topWindow setRootViewController:vc];
+                
+                ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
+                NSURL *assetURL = [representation valueForProperty:ALAssetPropertyAssetURL];
+                
+                TTOpenInAppActivity *openInActivity = [[TTOpenInAppActivity alloc] initWithView:vc.view andRect:vc.view.bounds];
+                
+                // Do something interesting with the AV asset.
+                NSArray *activityItems = @[latestPhoto, assetURL];
+                UIActivityViewController *activityController =
+                [[UIActivityViewController alloc]
+                 initWithActivityItems:activityItems
+                 applicationActivities:@[ openInActivity ]];
+                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
+                
+                openInActivity.superViewController = activityController;
+                [openInActivity release];
+                
                 [vc presentViewController:activityController animated:YES completion:NULL];
                 
                 activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
@@ -71,7 +78,6 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                     [vc release];
                     [activityController release];
                 };
-
             }
         }];
     } failureBlock: ^(NSError *error) {
@@ -79,9 +85,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
         NSLog(@"No groups");
     }];
     
-    
-    /*
-    NSArray *activityItems = @[@"image here"];
+    /*NSArray *activityItems = @[@"image here"];
     UIActivityViewController *activityController =
     [[UIActivityViewController alloc]
      initWithActivityItems:activityItems
@@ -100,10 +104,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
         [topWindow release];
         [vc release];
         [activityController release];
-    };
-     */
-    
-
+    };*/
 
     %orig(screenshot,error,context);
     

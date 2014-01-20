@@ -1,6 +1,6 @@
-#line 1 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 1 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 #import <SpringBoard/SpringBoard.h>
-
+#import "TTOpenInAppActivity.h"
 
 
 
@@ -17,7 +17,7 @@
 @class SBScreenShotter; 
 static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); 
 
-#line 14 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 14 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 
 
 
@@ -39,7 +39,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 
 
-
+    
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     
     
@@ -53,21 +53,29 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
             
             
             if (alAsset) {
-                ALAssetRepresentation *representation = [alAsset defaultRepresentation];
-                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                
-                
-                NSArray *activityItems = @[latestPhoto];
-                UIActivityViewController *activityController =
-                [[UIActivityViewController alloc]
-                 initWithActivityItems:activityItems
-                 applicationActivities:nil];
-                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
-                
                 UIWindow* topWindow = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] retain];
                 topWindow.hidden = NO;
                 UIViewController *vc  = [[UIViewController alloc] init];
+                
                 [topWindow setRootViewController:vc];
+                
+                ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
+                NSURL *assetURL = [representation valueForProperty:ALAssetPropertyAssetURL];
+                
+                TTOpenInAppActivity *openInActivity = [[TTOpenInAppActivity alloc] initWithView:vc.view andRect:vc.view.bounds];
+                
+                
+                NSArray *activityItems = @[latestPhoto, assetURL];
+                UIActivityViewController *activityController =
+                [[UIActivityViewController alloc]
+                 initWithActivityItems:activityItems
+                 applicationActivities:@[ openInActivity ]];
+                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
+                
+                openInActivity.superViewController = activityController;
+                [openInActivity release];
+                
                 [vc presentViewController:activityController animated:YES completion:NULL];
                 
                 activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
@@ -77,7 +85,6 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                     [vc release];
                     [activityController release];
                 };
-
             }
         }];
     } failureBlock: ^(NSError *error) {
@@ -86,7 +93,6 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
     }];
     
     
-    
 
 
 
@@ -105,10 +111,6 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 
 
-
-
-
-    
 
 
     _logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(self, _cmd, screenshot,error,context);
@@ -149,4 +151,4 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);} }
-#line 143 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 145 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
