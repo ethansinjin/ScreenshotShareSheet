@@ -17,7 +17,6 @@
 /* Begin PBXFileReference section */
 		AFD8F672187B496300FBA165 /* ScreenshotShareSheet.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = ScreenshotShareSheet.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD8F675187B496300FBA165 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		AFD8F67A187B496300FBA165 /* control.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = control.txt; path = Package/DEBIAN/control.txt; sourceTree = "<group>"; };
 		AFD8F67B187B496300FBA165 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
 		AFD8F67D187B496300FBA165 /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
 		AFD8F681187B496300FBA165 /* ScreenshotShareSheet.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ScreenshotShareSheet.plist; path = Package/Library/PreferenceLoader/Preferences/ScreenshotShareSheet.plist; sourceTree = "<group>"; };
@@ -98,7 +97,6 @@
 		AFD8F679187B496300FBA165 /* DEBIAN */ = {
 			isa = PBXGroup;
 			children = (
-				AFD8F67A187B496300FBA165 /* control.txt */,
 				AFD8F67B187B496300FBA165 /* control */,
 			);
 			name = DEBIAN;
