@@ -67,6 +67,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                 UIWindow* topWindow = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] retain];
                 topWindow.hidden = NO;
                 UIViewController *vc  = [[UIViewController alloc] init];
+                
                 [topWindow setRootViewController:vc];
                 [vc presentViewController:activityController animated:YES completion:NULL];
                 
@@ -149,4 +150,4 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);} }
-#line 143 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 144 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
