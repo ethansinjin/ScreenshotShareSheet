@@ -35,6 +35,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
             if (alAsset) {
                 UIWindow* topWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
                 topWindow.hidden = NO;
+                topWindow.windowLevel = UIWindowLevelAlert;
                 UIViewController *vc  = [[UIViewController alloc] init];
                 
                 [topWindow setRootViewController:vc];
