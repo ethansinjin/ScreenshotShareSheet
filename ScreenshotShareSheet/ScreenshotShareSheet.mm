@@ -26,19 +26,6 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
     NSLog(@"ScreenshotShareSheet: A screenshot was taken.");
     
     
-    
-
-
-
-
-
-    
-
-
-
-
-
-
 
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     
@@ -53,20 +40,31 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
             
             
             if (alAsset) {
-                UIWindow* topWindow = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] retain];
+                UIWindow* topWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
                 topWindow.hidden = NO;
                 UIViewController *vc  = [[UIViewController alloc] init];
                 
                 [topWindow setRootViewController:vc];
+                [vc release];
                 
                 ALAssetRepresentation *representation = [alAsset defaultRepresentation];
                 UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                NSURL *assetURL = [alAsset valueForProperty:ALAssetPropertyAssetURL];
+                
+                NSString *tempDir = NSTemporaryDirectory();
+                NSString *path = [tempDir stringByAppendingPathComponent:[representation filename]];
+                
+                [UIImagePNGRepresentation(latestPhoto) writeToFile:path atomically:NO];
                 
                 TTOpenInAppActivity *openInActivity = [[TTOpenInAppActivity alloc] initWithView:vc.view andRect:vc.view.bounds];
                 
+                openInActivity.completionHandler = ^(NSArray *files, NSString *destinationApplication) {
+                    for (NSURL *file in files) {
+                        [[NSFileManager defaultManager] removeItemAtURL:file error:NULL];
+                    }
+                };
                 
-                NSArray *activityItems = @[latestPhoto, assetURL];
+                
+                NSArray *activityItems = @[ [NSURL fileURLWithPath:path] ];
                 UIActivityViewController *activityController =
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
@@ -82,10 +80,8 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                     [topWindow performSelector:@selector(setHidden:) withObject:self afterDelay:0.40f]; 
                     
                     [topWindow release];
-                    [vc release];
                     [activityController release];
                 };
-
             }
         }];
     } failureBlock: ^(NSError *error) {
@@ -93,6 +89,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
         NSLog(@"No groups");
     }];
     
+    [library release];
     
     
 
@@ -115,8 +112,6 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 
 
-
-    
 
 
     _logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(self, _cmd, screenshot,error,context);
@@ -157,4 +152,4 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);} }
-#line 151 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 146 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"

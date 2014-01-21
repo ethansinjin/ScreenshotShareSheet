@@ -19,19 +19,6 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
     NSLog(@"ScreenshotShareSheet: A screenshot was taken.");
     //the user just took a screenshot. We should offer to do something with it.
     //most main code goes here, BEFORE %orig
-    /*
-    NSString *message = [NSString stringWithFormat:@"You just took a screenshot!"];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"TEST" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-    */
-    /*
-    id lib = [PLPhotoLibrary sharedPhotoLibrary];
-    id allPhotosAlbum = [lib allPhotosAlbum];
-    id contents = [lib albumContents];
-    id lastPhoto = [contents objectAtIndex:[contents count] -1];
-    UIImage *screenshot = [lastPhoto newFullSizeImage];
-     */
 
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     
@@ -46,20 +33,31 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
             
             // The end of the enumeration is signaled by asset == nil.
             if (alAsset) {
-                UIWindow* topWindow = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] retain];
+                UIWindow* topWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
                 topWindow.hidden = NO;
                 UIViewController *vc  = [[UIViewController alloc] init];
                 
                 [topWindow setRootViewController:vc];
+                [vc release];
                 
                 ALAssetRepresentation *representation = [alAsset defaultRepresentation];
                 UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
-                NSURL *assetURL = [alAsset valueForProperty:ALAssetPropertyAssetURL];
+                
+                NSString *tempDir = NSTemporaryDirectory();
+                NSString *path = [tempDir stringByAppendingPathComponent:[representation filename]];
+                
+                [UIImagePNGRepresentation(latestPhoto) writeToFile:path atomically:NO];
                 
                 TTOpenInAppActivity *openInActivity = [[TTOpenInAppActivity alloc] initWithView:vc.view andRect:vc.view.bounds];
                 
+                openInActivity.completionHandler = ^(NSArray *files, NSString *destinationApplication) {
+                    for (NSURL *file in files) {
+                        [[NSFileManager defaultManager] removeItemAtURL:file error:NULL];
+                    }
+                };
+                
                 // Do something interesting with the AV asset.
-                NSArray *activityItems = @[latestPhoto, assetURL];
+                NSArray *activityItems = @[ [NSURL fileURLWithPath:path] ];
                 UIActivityViewController *activityController =
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
@@ -75,10 +73,8 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                     [topWindow performSelector:@selector(setHidden:) withObject:self afterDelay:0.40f]; // delay is for the animation to complete.
                     //let's hope this works
                     [topWindow release];
-                    [vc release];
                     [activityController release];
                 };
-
             }
         }];
     } failureBlock: ^(NSError *error) {
@@ -86,6 +82,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
         NSLog(@"No groups");
     }];
     
+    [library release];
     
     /*
     NSArray *activityItems = @[@"image here"];
@@ -109,8 +106,6 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
         [activityController release];
     };
      */
-    
-
 
     %orig(screenshot,error,context);
     

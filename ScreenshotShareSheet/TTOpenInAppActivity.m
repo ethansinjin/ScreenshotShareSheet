@@ -213,6 +213,11 @@
     }
 }
 
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application
+{
+    self.completionHandler(self.fileURLs, application);
+}
+
 - (void) documentInteractionControllerDidDismissOpenInMenu: (UIDocumentInteractionController *) controller
 {
     // Inform delegate

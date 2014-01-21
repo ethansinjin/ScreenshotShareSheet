@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA5A6A93188DC17D00D48298 /* TTOpenInAppActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = AA5A6A8D188DC17D00D48298 /* TTOpenInAppActivity.h */; };
 		AA5A6A94188DC17D00D48298 /* TTOpenInAppActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5A6A8E188DC17D00D48298 /* TTOpenInAppActivity.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		AA5A6A96188DC3A800D48298 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5A6A95188DC3A800D48298 /* MobileCoreServices.framework */; };
 		AFD8F676187B496300FBA165 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD8F675187B496300FBA165 /* Foundation.framework */; };
 		AFD8F687187B496300FBA165 /* ScreenshotShareSheet.mm in Sources */ = {isa = PBXBuildFile; fileRef = AFD8F686187B496300FBA165 /* ScreenshotShareSheet.mm */; };
 		AFD8F691187B497200FBA165 /* libsubstrate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD8F690187B497200FBA165 /* libsubstrate.dylib */; };
@@ -23,6 +24,9 @@
 		AA5A6A90188DC17D00D48298 /* TTOpenInAppActivity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TTOpenInAppActivity@2x.png"; sourceTree = "<group>"; };
 		AA5A6A91188DC17D00D48298 /* TTOpenInAppActivity7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TTOpenInAppActivity7.png; sourceTree = "<group>"; };
 		AA5A6A92188DC17D00D48298 /* TTOpenInAppActivity7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TTOpenInAppActivity7@2x.png"; sourceTree = "<group>"; };
+		AA5A6A95188DC3A800D48298 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AA5A6A97188DC8E300D48298 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AA5A6A99188DE4F500D48298 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		AFD8F672187B496300FBA165 /* ScreenshotShareSheet.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = ScreenshotShareSheet.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD8F675187B496300FBA165 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AFD8F67B187B496300FBA165 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
@@ -44,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5A6A96188DC3A800D48298 /* MobileCoreServices.framework in Frameworks */,
 				AFEBDBA7187BC90600061081 /* AssetsLibrary.framework in Frameworks */,
 				AFD8F693187B4F3300FBA165 /* UIKit.framework in Frameworks */,
 				AFD8F691187B497200FBA165 /* libsubstrate.dylib in Frameworks */,
@@ -74,6 +79,9 @@
 		AFD8F674187B496300FBA165 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA5A6A99188DE4F500D48298 /* AudioToolbox.framework */,
+				AA5A6A97188DC8E300D48298 /* QuartzCore.framework */,
+				AA5A6A95188DC3A800D48298 /* MobileCoreServices.framework */,
 				AFEBDBA6187BC90600061081 /* AssetsLibrary.framework */,
 				AFD8F692187B4F3300FBA165 /* UIKit.framework */,
 				AFD8F690187B497200FBA165 /* libsubstrate.dylib */,
