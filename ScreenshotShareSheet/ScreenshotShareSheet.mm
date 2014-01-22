@@ -1,4 +1,4 @@
-#line 1 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 1 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 #import <SpringBoard/SpringBoard.h>
 #import "TTOpenInAppActivity.h"
 #import <AudioToolbox/AudioToolbox.h>
@@ -18,7 +18,7 @@
 @class SBScreenShotter; 
 static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); 
 
-#line 15 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 15 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 
 
 
@@ -47,7 +47,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                 UIViewController *vc  = [[UIViewController alloc] init];
                 
                 [topWindow setRootViewController:vc];
-                [vc release];
+                
                 
                 ALAssetRepresentation *representation = [alAsset defaultRepresentation];
                 UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
@@ -68,10 +68,19 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                  applicationActivities:@[ openInActivity ]];
                 activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact, UIActivityTypePrint ];
                 
-                openInActivity.superViewController = activityController;
-                [openInActivity release];
                 
-                [vc presentViewController:activityController animated:YES completion:NULL];
+                if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+                    openInActivity.superViewController = activityController;
+                    [openInActivity release];
+                    [vc presentViewController:activityController animated:YES completion:NULL];
+                } else {
+                    UIPopoverController *activityPopoverController = [[UIPopoverController alloc] initWithContentViewController:activityController];
+                    openInActivity.superViewController = activityPopoverController;
+                    [openInActivity release];
+                    [activityPopoverController presentPopoverFromRect:CGRectMake(CGRectGetMidX(vc.view.bounds), 0, 1, 1) inView:vc.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                 }
+                
+
                 
                 activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
                     
@@ -83,6 +92,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                     [topWindow release];
                     [activityController release];
                 };
+                
             }
         }];
     } failureBlock: ^(NSError *error) {
@@ -153,4 +163,4 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);} }
-#line 147 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 157 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"

@@ -147,7 +147,7 @@
         if(self.barButtonItem)
             sucess = [self.docController presentOpenInMenuFromBarButtonItem:self.barButtonItem animated:YES];
         else
-            sucess = [self.docController presentOpenInMenuFromRect:self.rect inView:self.superView animated:YES];
+            sucess = [self.docController presentOpenInMenuFromRect:CGRectMake(CGRectGetMidX(self.superView.bounds), 0, 1, 1) inView:self.superView animated:YES];
     }
     
     if(!sucess){

@@ -40,7 +40,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                 UIViewController *vc  = [[UIViewController alloc] init];
                 
                 [topWindow setRootViewController:vc];
-                [vc release];
+                //[vc release];
                 
                 ALAssetRepresentation *representation = [alAsset defaultRepresentation];
                 UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
@@ -61,10 +61,19 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                  applicationActivities:@[ openInActivity ]];
                 activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact, UIActivityTypePrint ];
                 
-                openInActivity.superViewController = activityController;
-                [openInActivity release];
                 
-                [vc presentViewController:activityController animated:YES completion:NULL];
+                if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+                    openInActivity.superViewController = activityController;
+                    [openInActivity release];
+                    [vc presentViewController:activityController animated:YES completion:NULL];
+                } else {
+                    UIPopoverController *activityPopoverController = [[UIPopoverController alloc] initWithContentViewController:activityController];
+                    openInActivity.superViewController = activityPopoverController;
+                    [openInActivity release];
+                    [activityPopoverController presentPopoverFromRect:CGRectMake(CGRectGetMidX(vc.view.bounds), 0, 1, 1) inView:vc.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                 }
+                
+
                 
                 activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
                     //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -76,6 +85,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                     [topWindow release];
                     [activityController release];
                 };
+                
             }
         }];
     } failureBlock: ^(NSError *error) {
