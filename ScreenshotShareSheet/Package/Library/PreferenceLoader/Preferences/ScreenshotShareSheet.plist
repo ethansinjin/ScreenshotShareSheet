@@ -14,6 +14,8 @@
 	<key>items</key>
 	<array>
 		<dict>
+			<key>footerText</key>
+			<string>The slider above controls the delay between tapping an action/cancel and the response. Large values will cause a noticeable delay.</string>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>isStaticText</key>
@@ -37,23 +39,39 @@
 			<key>cell</key>
 			<string>PSSliderCell</string>
 			<key>default</key>
-			<real>50</real>
+			<real>0.4</real>
 			<key>defaults</key>
 			<string>com.ethansquared.ScreenshotShareSheet</string>
 			<key>key</key>
 			<string>delay</string>
 			<key>min</key>
-			<integer>20</integer>
+			<real>0.2</real>
 			<key>max</key>
-			<integer>100</integer>
+			<real>0.9</real>
 			<key>showValue</key>
 			<true/>
 		</dict>
 		<dict>
+			<key>footerText</key>
+			<string>AirDrop currently does not work on the &apos;Open In&apos; sheet.</string>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>The slider above controls the delay between tapping an action/cancel and the response.  Short values may result in visual glitches, while long values will cause a delay.</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>Advanced</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.ethansquared.ScreenshotShareSheet</string>
+			<key>key</key>
+			<string>openinenabled</string>
+			<key>label</key>
+			<string>Enable &apos;Open In&apos;</string>
 		</dict>
 		<dict>
 			<key>cell</key>
