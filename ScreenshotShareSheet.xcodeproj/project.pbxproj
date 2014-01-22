@@ -21,10 +21,6 @@
 /* Begin PBXFileReference section */
 		AA5A6A8D188DC17D00D48298 /* TTOpenInAppActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTOpenInAppActivity.h; sourceTree = "<group>"; };
 		AA5A6A8E188DC17D00D48298 /* TTOpenInAppActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTOpenInAppActivity.m; sourceTree = "<group>"; };
-		AA5A6A8F188DC17D00D48298 /* TTOpenInAppActivity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TTOpenInAppActivity.png; sourceTree = "<group>"; };
-		AA5A6A90188DC17D00D48298 /* TTOpenInAppActivity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TTOpenInAppActivity@2x.png"; sourceTree = "<group>"; };
-		AA5A6A91188DC17D00D48298 /* TTOpenInAppActivity7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TTOpenInAppActivity7.png; sourceTree = "<group>"; };
-		AA5A6A92188DC17D00D48298 /* TTOpenInAppActivity7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TTOpenInAppActivity7@2x.png"; sourceTree = "<group>"; };
 		AA5A6A95188DC3A800D48298 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		AA5A6A97188DC8E300D48298 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AA5A6A99188DE4F500D48298 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -97,10 +93,6 @@
 			children = (
 				AA5A6A8D188DC17D00D48298 /* TTOpenInAppActivity.h */,
 				AA5A6A8E188DC17D00D48298 /* TTOpenInAppActivity.m */,
-				AA5A6A8F188DC17D00D48298 /* TTOpenInAppActivity.png */,
-				AA5A6A90188DC17D00D48298 /* TTOpenInAppActivity@2x.png */,
-				AA5A6A91188DC17D00D48298 /* TTOpenInAppActivity7.png */,
-				AA5A6A92188DC17D00D48298 /* TTOpenInAppActivity7@2x.png */,
 				AFD8F685187B496300FBA165 /* ScreenshotShareSheet.xm */,
 				AFD8F686187B496300FBA165 /* ScreenshotShareSheet.mm */,
 				AFD8F678187B496300FBA165 /* Package */,

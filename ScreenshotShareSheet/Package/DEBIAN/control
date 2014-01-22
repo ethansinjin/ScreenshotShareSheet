@@ -1,6 +1,6 @@
 Package: com.ethansquared.ScreenshotShareSheet
 Name: ScreenshotShareSheet
-Version: 1.0-5
+Version: 1.0-30
 Description: 
 Section: System
 Depends: firmware (>= 5.0), mobilesubstrate

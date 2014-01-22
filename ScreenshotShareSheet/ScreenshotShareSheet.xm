@@ -1,4 +1,5 @@
 #import <SpringBoard/SpringBoard.h>
+#import <BackBoardServices/BKSApplicationStateMonitor.h>
 #import "TTOpenInAppActivity.h"
 #import <AudioToolbox/AudioToolbox.h>
 
@@ -17,7 +18,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
 -(void)finishedWritingScreenshot:(id)screenshot didFinishSavingWithError:(id)error context:(void*)context
 {
     %log;
-    NSLog(@"ScreenshotShareSheet: A screenshot was taken.");
+    //NSLog(@"ScreenshotShareSheet: A screenshot was taken.");
     //the user just took a screenshot. We should offer to do something with it.
     //most main code goes here, BEFORE %orig
 
@@ -59,8 +60,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
                  applicationActivities:@[ openInActivity ]];
-                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact, UIActivityTypePrint ];
-                
+                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypeAirDrop ];
                 
                 if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
                     openInActivity.superViewController = activityController;
@@ -81,7 +81,6 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                     [[NSFileManager defaultManager] removeItemAtURL:fileURL error:NULL];
                     
                     [topWindow performSelector:@selector(setHidden:) withObject:self afterDelay:0.40f]; // delay is for the animation to complete.
-                    //let's hope this works
                     [topWindow release];
                     [activityController release];
                 };
@@ -90,6 +89,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
         }];
     } failureBlock: ^(NSError *error) {
         // Typically you should handle an error more gracefully than this.
+        // but errors don't happen because we're AWESOME, so ignore this stupid warning above.
         NSLog(@"No groups");
     }];
     

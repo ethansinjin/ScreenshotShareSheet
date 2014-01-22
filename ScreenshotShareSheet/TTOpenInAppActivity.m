@@ -37,6 +37,7 @@
     if(self =[super init]){
         self.superView = view;
         self.rect = rect;
+        
     }
     return self;
 }
@@ -62,10 +63,26 @@
 
 - (UIImage *)activityImage
 {
-	if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
-        return [UIImage imageNamed:@"TTOpenInAppActivity7"];
-    else
-        return [UIImage imageNamed:@"TTOpenInAppActivity"];
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.00) {
+        // RETINA DISPLAY
+        if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+            NSString *filePath = [NSString stringWithFormat:@"/Library/Application Support/ScreenshotShareSheet/%@", @"TTOpenInAppActivity7@2x.png"];
+            return [UIImage imageWithContentsOfFile:filePath];
+        }else{
+            NSString *filePath = [NSString stringWithFormat:@"/Library/Application Support/ScreenshotShareSheet/%@", @"TTOpenInAppActivity@2x.png"];
+            return [UIImage imageWithContentsOfFile:filePath];
+        }
+
+    }else{
+        // NOT RETINA DISPLAY
+        if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+            NSString *filePath = [NSString stringWithFormat:@"/Library/Application Support/ScreenshotShareSheet/%@", @"TTOpenInAppActivity7.png"];
+            return [UIImage imageWithContentsOfFile:filePath];
+        }else{
+            NSString *filePath = [NSString stringWithFormat:@"/Library/Application Support/ScreenshotShareSheet/%@", @"TTOpenInAppActivity.png"];
+            return [UIImage imageWithContentsOfFile:filePath];
+        }
+    }
 }
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems
@@ -122,6 +139,7 @@
         else {
             // Open UIDocumentInteractionController
             [self openDocumentInteractionControllerWithFileURL:self.fileURLs.lastObject];
+            
         }
     }
 }

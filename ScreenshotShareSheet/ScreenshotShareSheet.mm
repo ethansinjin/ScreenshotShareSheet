@@ -1,5 +1,6 @@
 #line 1 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 #import <SpringBoard/SpringBoard.h>
+#import <BackBoardServices/BKSApplicationStateMonitor.h>
 #import "TTOpenInAppActivity.h"
 #import <AudioToolbox/AudioToolbox.h>
 
@@ -15,16 +16,16 @@
 
 #include <logos/logos.h>
 #include <substrate.h>
-@class SBScreenShotter; 
-static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); 
+@class SBScreenShotter; @class BKSApplicationStateMonitor; 
+static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); static id (*_logos_orig$_ungrouped$BKSApplicationStateMonitor$bundleInfoValueForKey$PID$)(BKSApplicationStateMonitor*, SEL, id, int); static id _logos_method$_ungrouped$BKSApplicationStateMonitor$bundleInfoValueForKey$PID$(BKSApplicationStateMonitor*, SEL, id, int); 
 
-#line 15 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 16 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 
 
 
 static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter* self, SEL _cmd, id screenshot, id error, void* context) {
     NSLog(@"-[<SBScreenShotter: %p> finishedWritingScreenshot:%@ didFinishSavingWithError:%@ context:%p]", self, screenshot, error, context);
-    NSLog(@"ScreenshotShareSheet: A screenshot was taken.");
+    
     
     
 
@@ -66,8 +67,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
                  applicationActivities:@[ openInActivity ]];
-                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact, UIActivityTypePrint ];
-                
+                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypeAirDrop ];
                 
                 if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
                     openInActivity.superViewController = activityController;
@@ -88,7 +88,6 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                     [[NSFileManager defaultManager] removeItemAtURL:fileURL error:NULL];
                     
                     [topWindow performSelector:@selector(setHidden:) withObject:self afterDelay:0.40f]; 
-                    
                     [topWindow release];
                     [activityController release];
                 };
@@ -96,6 +95,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
             }
         }];
     } failureBlock: ^(NSError *error) {
+        
         
         NSLog(@"No groups");
     }];
@@ -161,6 +161,24 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 
 
+
+
+
+
+static id _logos_method$_ungrouped$BKSApplicationStateMonitor$bundleInfoValueForKey$PID$(BKSApplicationStateMonitor* self, SEL _cmd, id arg1, int arg2) {
+    NSLog(@"-[<BKSApplicationStateMonitor: %p> bundleInfoValueForKey:%@ PID:%d]", self, arg1, arg2);
+    NSLog(@"asdfdsahljkadsghjklgdsajlhkdsafhjkldgsafjhkdsafklgjasdjkldsafhjklagdsjklhdsajhklsdfjklhdsafjk");
+    
+	id originalReturnOfMessage = _logos_orig$_ungrouped$BKSApplicationStateMonitor$bundleInfoValueForKey$PID$(self, _cmd, arg1, arg2);
+	
+	if(originalReturnOfMessage == nil){
+        originalReturnOfMessage = @"com.apple.SpringBoard";
+    }
+    
+	return originalReturnOfMessage;
+}
+
+
 static __attribute__((constructor)) void _logosLocalInit() {
-{Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);} }
-#line 157 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+{Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);Class _logos_class$_ungrouped$BKSApplicationStateMonitor = objc_getClass("BKSApplicationStateMonitor"); MSHookMessageEx(_logos_class$_ungrouped$BKSApplicationStateMonitor, @selector(bundleInfoValueForKey:PID:), (IMP)&_logos_method$_ungrouped$BKSApplicationStateMonitor$bundleInfoValueForKey$PID$, (IMP*)&_logos_orig$_ungrouped$BKSApplicationStateMonitor$bundleInfoValueForKey$PID$);} }
+#line 175 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
