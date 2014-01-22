@@ -1,6 +1,7 @@
 #import <SpringBoard/SpringBoard.h>
 #import "TTOpenInAppActivity.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <PhotoLibraryServices/PLPhotoStreamsHelper.h>
 
 // Logos by Dustin Howett
 // See http://iphonedevwiki.net/index.php/Logos
@@ -35,9 +36,11 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
         enabledPreference = [NSNumber numberWithBool:YES];
         openInPreference = [NSNumber numberWithBool:NO];
         delayPreference = [NSNumber numberWithDouble:0.40];
+        NSNumber *photoStreamPreference = [NSNumber numberWithBool:YES];
         [settings setObject:enabledPreference forKey:@"enabled"];
         [settings setObject:openInPreference forKey:@"openinenabled"];
         [settings setObject:delayPreference forKey:@"delay"];
+        [settings setObject:photoStreamPreference forKey:@"photostream"];
         BOOL result = [settings writeToFile:settingsPath atomically:YES];
         if(result){
             NSLog(@"The user didn't have a settings file yet. Generated one");
@@ -158,5 +161,23 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
 }
 
 */
+
+%end
+
+%hook PLPhotoStreamsHelper
+
+- (BOOL)shouldPublishScreenShots {
+    NSString *settingsPath = [NSString stringWithFormat:@"%@/Library/Preferences/%@", NSHomeDirectory(), @"com.ethansquared.ScreenshotShareSheet.plist"];
+    NSMutableDictionary *settings = [NSMutableDictionary dictionaryWithContentsOfFile:
+                                     settingsPath];
+	NSNumber* preference = [settings objectForKey:@"photostream"];
+    if(preference == nil){
+        //taking lazy instantiation to the next level!
+        preference = [NSNumber numberWithBool:YES];
+        [settings setObject:preference forKey:@"photostream"];
+        [settings writeToFile:settingsPath atomically:YES];
+    }
+    return [preference boolValue];
+}
 
 %end

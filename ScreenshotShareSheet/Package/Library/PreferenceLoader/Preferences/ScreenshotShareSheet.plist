@@ -21,7 +21,7 @@
 			<key>isStaticText</key>
 			<true/>
 			<key>label</key>
-			<string>Settings</string>
+			<string>General</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -72,6 +72,18 @@
 			<string>openinenabled</string>
 			<key>label</key>
 			<string>Enable &apos;Open In&apos;</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.ethansquared.ScreenshotShareSheet</string>
+			<key>key</key>
+			<string>photostream</string>
+			<key>label</key>
+			<string>Screenshots in Photo Stream</string>
 		</dict>
 		<dict>
 			<key>cell</key>

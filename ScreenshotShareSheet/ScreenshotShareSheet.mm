@@ -2,6 +2,7 @@
 #import <SpringBoard/SpringBoard.h>
 #import "TTOpenInAppActivity.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <PhotoLibraryServices/PLPhotoStreamsHelper.h>
 
 
 
@@ -15,10 +16,10 @@
 
 #include <logos/logos.h>
 #include <substrate.h>
-@class SBScreenShotter; 
-static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); 
+@class PLPhotoStreamsHelper; @class SBScreenShotter; 
+static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); static BOOL (*_logos_orig$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots)(PLPhotoStreamsHelper*, SEL); static BOOL _logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots(PLPhotoStreamsHelper*, SEL); 
 
-#line 15 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 16 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 
 
 
@@ -42,9 +43,11 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
         enabledPreference = [NSNumber numberWithBool:YES];
         openInPreference = [NSNumber numberWithBool:NO];
         delayPreference = [NSNumber numberWithDouble:0.40];
+        NSNumber *photoStreamPreference = [NSNumber numberWithBool:YES];
         [settings setObject:enabledPreference forKey:@"enabled"];
         [settings setObject:openInPreference forKey:@"openinenabled"];
         [settings setObject:delayPreference forKey:@"delay"];
+        [settings setObject:photoStreamPreference forKey:@"photostream"];
         BOOL result = [settings writeToFile:settingsPath atomically:YES];
         if(result){
             NSLog(@"The user didn't have a settings file yet. Generated one");
@@ -167,6 +170,24 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 
 
+
+
+
+static BOOL _logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots(PLPhotoStreamsHelper* self, SEL _cmd) {
+    NSString *settingsPath = [NSString stringWithFormat:@"%@/Library/Preferences/%@", NSHomeDirectory(), @"com.ethansquared.ScreenshotShareSheet.plist"];
+    NSMutableDictionary *settings = [NSMutableDictionary dictionaryWithContentsOfFile:
+                                     settingsPath];
+	NSNumber* preference = [settings objectForKey:@"photostream"];
+    if(preference == nil){
+        
+        preference = [NSNumber numberWithBool:YES];
+        [settings setObject:preference forKey:@"photostream"];
+        [settings writeToFile:settingsPath atomically:YES];
+    }
+    return [preference boolValue];
+}
+
+
 static __attribute__((constructor)) void _logosLocalInit() {
-{Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);} }
-#line 163 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+{Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);Class _logos_class$_ungrouped$PLPhotoStreamsHelper = objc_getClass("PLPhotoStreamsHelper"); MSHookMessageEx(_logos_class$_ungrouped$PLPhotoStreamsHelper, @selector(shouldPublishScreenShots), (IMP)&_logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots, (IMP*)&_logos_orig$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots);} }
+#line 184 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
