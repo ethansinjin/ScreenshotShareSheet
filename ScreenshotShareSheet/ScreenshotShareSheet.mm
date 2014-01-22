@@ -66,7 +66,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
                  applicationActivities:@[ openInActivity ]];
-                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
+                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact, UIActivityTypePrint ];
                 
                 openInActivity.superViewController = activityController;
                 [openInActivity release];

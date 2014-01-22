@@ -59,7 +59,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
                  applicationActivities:@[ openInActivity ]];
-                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact];
+                activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll,UIActivityTypeAssignToContact, UIActivityTypePrint ];
                 
                 openInActivity.superViewController = activityController;
                 [openInActivity release];
