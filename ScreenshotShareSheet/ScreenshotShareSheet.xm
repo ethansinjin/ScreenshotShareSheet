@@ -89,7 +89,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                     }else{
                         activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[ ]];
                     }
-                    activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll, UIActivityTypePrint, UIActivityTypeAirDrop, UIActivityTypeAssignToContact ];
+                    activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll, UIActivityTypePrint, UIActivityTypeAirDrop ];
                 
                     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
                         openInActivity.superViewController = activityController;
