@@ -1,5 +1,6 @@
 #import <SpringBoard/SpringBoard.h>
 #import "TTOpenInAppActivity.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 // Logos by Dustin Howett
 // See http://iphonedevwiki.net/index.php/Logos
@@ -46,19 +47,14 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                 
                 NSString *tempDir = NSTemporaryDirectory();
                 NSString *path = [tempDir stringByAppendingPathComponent:[representation filename]];
+                NSURL *fileURL = [NSURL fileURLWithPath:path];
                 
                 [UIImagePNGRepresentation(latestPhoto) writeToFile:path atomically:NO];
                 
                 TTOpenInAppActivity *openInActivity = [[TTOpenInAppActivity alloc] initWithView:vc.view andRect:vc.view.bounds];
                 
-                openInActivity.completionHandler = ^(NSArray *files, NSString *destinationApplication) {
-                    for (NSURL *file in files) {
-                        [[NSFileManager defaultManager] removeItemAtURL:file error:NULL];
-                    }
-                };
-                
                 // Do something interesting with the AV asset.
-                NSArray *activityItems = @[ [NSURL fileURLWithPath:path] ];
+                NSArray *activityItems = @[ fileURL ];
                 UIActivityViewController *activityController =
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
@@ -71,6 +67,10 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                 [vc presentViewController:activityController animated:YES completion:NULL];
                 
                 activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
+                    //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    
+                    [[NSFileManager defaultManager] removeItemAtURL:fileURL error:NULL];
+                    
                     [topWindow performSelector:@selector(setHidden:) withObject:self afterDelay:0.40f]; // delay is for the animation to complete.
                     //let's hope this works
                     [topWindow release];

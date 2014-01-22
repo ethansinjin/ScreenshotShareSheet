@@ -22,7 +22,6 @@
 
 @property (nonatomic, weak) id superViewController;
 @property (nonatomic, weak) id<TTOpenInAppActivityDelegate> delegate;
-@property (nonatomic, strong) void (^completionHandler)(NSArray *, NSString *);
 
 - (id)initWithView:(UIView *)view andRect:(CGRect)rect;
 - (id)initWithView:(UIView *)view andBarButtonItem:(UIBarButtonItem *)barButtonItem;

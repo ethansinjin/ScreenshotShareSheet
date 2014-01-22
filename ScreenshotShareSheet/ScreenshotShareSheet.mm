@@ -1,6 +1,7 @@
 #line 1 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 #import <SpringBoard/SpringBoard.h>
 #import "TTOpenInAppActivity.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 
 
@@ -17,7 +18,7 @@
 @class SBScreenShotter; 
 static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); 
 
-#line 14 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 15 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 
 
 
@@ -53,19 +54,14 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                 
                 NSString *tempDir = NSTemporaryDirectory();
                 NSString *path = [tempDir stringByAppendingPathComponent:[representation filename]];
+                NSURL *fileURL = [NSURL fileURLWithPath:path];
                 
                 [UIImagePNGRepresentation(latestPhoto) writeToFile:path atomically:NO];
                 
                 TTOpenInAppActivity *openInActivity = [[TTOpenInAppActivity alloc] initWithView:vc.view andRect:vc.view.bounds];
                 
-                openInActivity.completionHandler = ^(NSArray *files, NSString *destinationApplication) {
-                    for (NSURL *file in files) {
-                        [[NSFileManager defaultManager] removeItemAtURL:file error:NULL];
-                    }
-                };
                 
-                
-                NSArray *activityItems = @[ [NSURL fileURLWithPath:path] ];
+                NSArray *activityItems = @[ fileURL ];
                 UIActivityViewController *activityController =
                 [[UIActivityViewController alloc]
                  initWithActivityItems:activityItems
@@ -78,6 +74,10 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                 [vc presentViewController:activityController animated:YES completion:NULL];
                 
                 activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
+                    
+                    
+                    [[NSFileManager defaultManager] removeItemAtURL:fileURL error:NULL];
+                    
                     [topWindow performSelector:@selector(setHidden:) withObject:self afterDelay:0.40f]; 
                     
                     [topWindow release];
