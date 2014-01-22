@@ -1,4 +1,4 @@
-#line 1 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 1 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 #import <SpringBoard/SpringBoard.h>
 #import "TTOpenInAppActivity.h"
 #import <AudioToolbox/AudioToolbox.h>
@@ -19,7 +19,11 @@
 @class PLPhotoStreamsHelper; @class SBScreenShotter; 
 static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); static BOOL (*_logos_orig$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots)(PLPhotoStreamsHelper*, SEL); static BOOL _logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots(PLPhotoStreamsHelper*, SEL); 
 
+<<<<<<< HEAD
 #line 16 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+=======
+#line 15 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+>>>>>>> 123b5e62d3cbb4e6dac93214b51c2c9f0b033c2f
 
 
 
@@ -96,7 +100,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                     }else{
                         activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[ ]];
                     }
-                    activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll, UIActivityTypePrint, UIActivityTypeAirDrop ];
+                    activityController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll, UIActivityTypePrint, UIActivityTypeAirDrop, UIActivityTypeAssignToContact ];
                 
                     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
                         openInActivity.superViewController = activityController;
@@ -189,5 +193,10 @@ static BOOL _logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenSho
 
 
 static __attribute__((constructor)) void _logosLocalInit() {
+<<<<<<< HEAD
 {Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);Class _logos_class$_ungrouped$PLPhotoStreamsHelper = objc_getClass("PLPhotoStreamsHelper"); MSHookMessageEx(_logos_class$_ungrouped$PLPhotoStreamsHelper, @selector(shouldPublishScreenShots), (IMP)&_logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots, (IMP*)&_logos_orig$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots);} }
 #line 184 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+=======
+{Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);} }
+#line 163 "/Users/ethan/Desktop/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+>>>>>>> 123b5e62d3cbb4e6dac93214b51c2c9f0b033c2f

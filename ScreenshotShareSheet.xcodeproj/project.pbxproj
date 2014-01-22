@@ -344,7 +344,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				iOSOpenDevBuildPackageOnAnyBuild = NO;
 				iOSOpenDevCopyOnBuild = NO;
+<<<<<<< HEAD
 				iOSOpenDevDevice = 10.0.1.25;
+=======
+				iOSOpenDevDevice = 192.168.2.7;
+>>>>>>> 123b5e62d3cbb4e6dac93214b51c2c9f0b033c2f
 				iOSOpenDevInstallOnAnyBuild = NO;
 				iOSOpenDevInstallOnProfiling = YES;
 				iOSOpenDevRespringOnInstall = YES;
@@ -368,7 +372,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				iOSOpenDevBuildPackageOnAnyBuild = NO;
 				iOSOpenDevCopyOnBuild = NO;
+<<<<<<< HEAD
 				iOSOpenDevDevice = 10.0.1.25;
+=======
+				iOSOpenDevDevice = 192.168.2.7;
+>>>>>>> 123b5e62d3cbb4e6dac93214b51c2c9f0b033c2f
 				iOSOpenDevInstallOnAnyBuild = NO;
 				iOSOpenDevInstallOnProfiling = YES;
 				iOSOpenDevRespringOnInstall = YES;
