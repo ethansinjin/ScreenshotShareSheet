@@ -29,17 +29,14 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                      settingsPath];
 	NSNumber* enabledPreference = [settings objectForKey:@"enabled"];
     NSNumber* openInPreference = [settings objectForKey:@"openinenabled"];
-    NSNumber* delayPreference = [settings objectForKey:@"delay"];
     //create a settings plist for first-time users
     if(settings == nil){
         settings = [[NSMutableDictionary alloc] init];
         enabledPreference = [NSNumber numberWithBool:YES];
         openInPreference = [NSNumber numberWithBool:NO];
-        delayPreference = [NSNumber numberWithDouble:0.40];
         NSNumber *photoStreamPreference = [NSNumber numberWithBool:YES];
         [settings setObject:enabledPreference forKey:@"enabled"];
         [settings setObject:openInPreference forKey:@"openinenabled"];
-        [settings setObject:delayPreference forKey:@"delay"];
         [settings setObject:photoStreamPreference forKey:@"photostream"];
         BOOL result = [settings writeToFile:settingsPath atomically:YES];
         if(result){
@@ -64,7 +61,7 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                 if (alAsset) {
                     UIWindow* topWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
                     topWindow.hidden = NO;
-                    topWindow.windowLevel = UIWindowLevelAlert;
+                    topWindow.windowLevel = UIWindowLevelStatusBar;
                     UIViewController *vc  = [[UIViewController alloc] init];
                 
                     [topWindow setRootViewController:vc];
@@ -102,14 +99,12 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
                         [activityPopoverController presentPopoverFromRect:CGRectMake(CGRectGetMidX(vc.view.bounds), 0, 1, 1) inView:vc.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
                     }
                 
-
-                
                     activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
                         //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
                     
                         [[NSFileManager defaultManager] removeItemAtURL:fileURL error:NULL];
                     
-                        [topWindow performSelector:@selector(setHidden:) withObject:self afterDelay:[delayPreference floatValue]]; // delay is for the animation to complete.
+                        [topWindow performSelector:@selector(setHidden:) withObject:@YES afterDelay:0.4]; // delay is for the animation to complete.
                         [topWindow release];
                         [activityController release];
                     };
@@ -130,37 +125,6 @@ iOSOpenDev post-project creation from template requirements (remove these lines 
     %orig(screenshot,error,context);
     
 }
-
-/* EXAMPLE METHODS (Leave commented out)
-
-+ (id)sharedInstance
-{
-	%log;
-
-	return %orig;
-}
-
-- (void)messageWithNoReturnAndOneArgument:(id)originalArgument
-{
-	%log;
-
-	%orig(originalArgument);
-	
-	// or, for exmaple, you could use a custom value instead of the original argument: %orig(customValue);
-}
-
-- (id)messageWithReturnAndNoArguments
-{
-	%log;
-
-	id originalReturnOfMessage = %orig;
-	
-	// for example, you could modify the original return value before returning it: [SomeOtherClass doSomethingToThisObject:originalReturnOfMessage];
-
-	return originalReturnOfMessage;
-}
-
-*/
 
 %end
 

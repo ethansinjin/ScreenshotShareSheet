@@ -14,16 +14,6 @@
 	<key>items</key>
 	<array>
 		<dict>
-			<key>footerText</key>
-			<string>The slider above controls the delay between tapping an action/cancel and the response. Large values will cause a noticeable delay.</string>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>isStaticText</key>
-			<true/>
-			<key>label</key>
-			<string>General</string>
-		</dict>
-		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
@@ -34,22 +24,6 @@
 			<string>enabled</string>
 			<key>label</key>
 			<string>Enable</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>default</key>
-			<real>0.4</real>
-			<key>defaults</key>
-			<string>com.ethansquared.ScreenshotShareSheet</string>
-			<key>key</key>
-			<string>delay</string>
-			<key>min</key>
-			<real>0.2</real>
-			<key>max</key>
-			<real>0.9</real>
-			<key>showValue</key>
-			<true/>
 		</dict>
 		<dict>
 			<key>footerText</key>

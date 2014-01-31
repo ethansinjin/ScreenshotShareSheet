@@ -1,4 +1,4 @@
-#line 1 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 1 "/Users/ethan/Documents/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 #import <SpringBoard/SpringBoard.h>
 #import "TTOpenInAppActivity.h"
 #import <AudioToolbox/AudioToolbox.h>
@@ -19,7 +19,7 @@
 @class PLPhotoStreamsHelper; @class SBScreenShotter; 
 static void (*_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$)(SBScreenShotter*, SEL, id, id, void*); static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$(SBScreenShotter*, SEL, id, id, void*); static BOOL (*_logos_orig$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots)(PLPhotoStreamsHelper*, SEL); static BOOL _logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots(PLPhotoStreamsHelper*, SEL); 
 
-#line 16 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 16 "/Users/ethan/Documents/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
 
 
 
@@ -36,17 +36,14 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                      settingsPath];
 	NSNumber* enabledPreference = [settings objectForKey:@"enabled"];
     NSNumber* openInPreference = [settings objectForKey:@"openinenabled"];
-    NSNumber* delayPreference = [settings objectForKey:@"delay"];
     
     if(settings == nil){
         settings = [[NSMutableDictionary alloc] init];
         enabledPreference = [NSNumber numberWithBool:YES];
         openInPreference = [NSNumber numberWithBool:NO];
-        delayPreference = [NSNumber numberWithDouble:0.40];
         NSNumber *photoStreamPreference = [NSNumber numberWithBool:YES];
         [settings setObject:enabledPreference forKey:@"enabled"];
         [settings setObject:openInPreference forKey:@"openinenabled"];
-        [settings setObject:delayPreference forKey:@"delay"];
         [settings setObject:photoStreamPreference forKey:@"photostream"];
         BOOL result = [settings writeToFile:settingsPath atomically:YES];
         if(result){
@@ -71,7 +68,7 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                 if (alAsset) {
                     UIWindow* topWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
                     topWindow.hidden = NO;
-                    topWindow.windowLevel = UIWindowLevelAlert;
+                    topWindow.windowLevel = UIWindowLevelStatusBar;
                     UIViewController *vc  = [[UIViewController alloc] init];
                 
                     [topWindow setRootViewController:vc];
@@ -109,14 +106,12 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
                         [activityPopoverController presentPopoverFromRect:CGRectMake(CGRectGetMidX(vc.view.bounds), 0, 1, 1) inView:vc.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
                     }
                 
-
-                
                     activityController.completionHandler = ^(NSString *activityType, BOOL completed) {
                         
                     
                         [[NSFileManager defaultManager] removeItemAtURL:fileURL error:NULL];
                     
-                        [topWindow performSelector:@selector(setHidden:) withObject:self afterDelay:[delayPreference floatValue]]; 
+                        [topWindow performSelector:@selector(setHidden:) withObject:@YES afterDelay:0.4]; 
                         [topWindow release];
                         [activityController release];
                     };
@@ -142,37 +137,6 @@ static void _logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$d
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 static BOOL _logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots(PLPhotoStreamsHelper* self, SEL _cmd) {
     NSString *settingsPath = [NSString stringWithFormat:@"%@/Library/Preferences/%@", NSHomeDirectory(), @"com.ethansquared.ScreenshotShareSheet.plist"];
     NSMutableDictionary *settings = [NSMutableDictionary dictionaryWithContentsOfFile:
@@ -190,4 +154,4 @@ static BOOL _logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenSho
 
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$SBScreenShotter = objc_getClass("SBScreenShotter"); MSHookMessageEx(_logos_class$_ungrouped$SBScreenShotter, @selector(finishedWritingScreenshot:didFinishSavingWithError:context:), (IMP)&_logos_method$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$, (IMP*)&_logos_orig$_ungrouped$SBScreenShotter$finishedWritingScreenshot$didFinishSavingWithError$context$);Class _logos_class$_ungrouped$PLPhotoStreamsHelper = objc_getClass("PLPhotoStreamsHelper"); MSHookMessageEx(_logos_class$_ungrouped$PLPhotoStreamsHelper, @selector(shouldPublishScreenShots), (IMP)&_logos_method$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots, (IMP*)&_logos_orig$_ungrouped$PLPhotoStreamsHelper$shouldPublishScreenShots);} }
-#line 184 "/Users/ethangillius/Developer/Cydia/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
+#line 148 "/Users/ethan/Documents/ScreenshotShareSheet/ScreenshotShareSheet/ScreenshotShareSheet.xm"
